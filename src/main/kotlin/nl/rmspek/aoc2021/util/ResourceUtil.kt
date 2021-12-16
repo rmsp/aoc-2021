@@ -5,7 +5,17 @@ import java.util.*
 
 fun readDayInput(day: Int) = object{}.javaClass.getResource("/day${day}/input").readText(Charset.forName("UTF-8"))
 
-fun readDepthList(day: Int): List<Int> {
+fun readStringList(day: Int): List<String> {
+    val scan = Scanner(readDayInput(day))
+    val result = mutableListOf<String>()
+    while(scan.hasNextLine()) {
+        result.add(scan.nextLine())
+    }
+
+    return result
+}
+
+fun readIntList(day: Int): List<Int> {
     val scan = Scanner(readDayInput(day))
     val result = mutableListOf<Int>()
     while(scan.hasNextInt()) {

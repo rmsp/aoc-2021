@@ -1,6 +1,6 @@
 package nl.rmspek.aoc2021.day1
 
-import nl.rmspek.aoc2021.util.readDepthList
+import nl.rmspek.aoc2021.util.readIntList
 
 fun countIncreases(depthList: List<Int>): Int {
     var rises = 0
@@ -17,5 +17,5 @@ fun countIncreases(depthList: List<Int>): Int {
 }
 
 fun main() {
-    println(countIncreases(readDepthList(1)))
+    println(countIncreases(readIntList(1)))
 }
