@@ -10,4 +10,4 @@ fun parseMoves(moves: List<String>): List<Move> =
         }
     }
 
-data class Move(val direction: Direction, val distance: Int)
+data class Move(val direction: Direction, val amount: Int)
