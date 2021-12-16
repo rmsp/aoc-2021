@@ -1,21 +1,21 @@
 package nl.rmspek.aoc2021.day1
 
-import nl.rmspek.aoc2021.util.readDayInput
-import java.util.*
+import nl.rmspek.aoc2021.util.readDepthList
 
-fun main(args: Array<String>) {
-    val scan = Scanner(readDayInput(1))
-    var prev: Int? = null
+fun countIncreases(depthList: List<Int>): Int {
     var rises = 0
-    while(scan.hasNextLine()) {
-        val curr = scan.nextLine().toInt()
-
-        if(prev != null && curr > prev) {
+    var prev: Int? = null
+    depthList.forEach {
+        if (prev != null && it > prev!!) {
             rises++
         }
 
-        prev = curr
+        prev = it
     }
 
-    println(rises)
+    return rises
+}
+
+fun main() {
+    println(countIncreases(readDepthList(1)))
 }
