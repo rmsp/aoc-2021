@@ -6,6 +6,7 @@ import kotlin.math.max
 
 class LineSegment (val begin: Point, val end: Point) {
     fun isDiagonal() = !(horizontalDistance() == 0 || verticalDistance() == 0)
+    fun is45Diagonal() = horizontalDistance() == verticalDistance()
     fun horizontalDistance(): Int = abs(begin.x - end.x)
     fun verticalDistance(): Int = abs(begin.y - end.y)
 

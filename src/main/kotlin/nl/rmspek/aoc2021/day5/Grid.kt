@@ -7,7 +7,7 @@ class Grid(maxX: Int, maxY: Int) {
         when {
             line.verticalDistance() == 0 -> writeHorizontal(line.begin.y, line.begin.x, line.end.x)
             line.horizontalDistance() == 0 -> writeVertical(line.begin.x, line.begin.y, line.end.y)
-            else -> throw Error("Line is diagonal")
+            else -> writeDiagonal(line)
         }
     }
 
@@ -22,10 +22,18 @@ class Grid(maxX: Int, maxY: Int) {
         between(startY, endY).forEach { grid[it][x]++ }
     }
 
-    private fun between(a: Int, b: Int): IntRange = when {
-        a > b -> IntRange(b, a)
-        a < b -> IntRange(a, b)
-        else -> IntRange(a, a)
+    private fun writeDiagonal(line: LineSegment) {
+        val xPath = between(line.begin.x, line.end.x)
+        val yPath = between(line.begin.y, line.end.y)
+        (0 until xPath.count()).forEach { idx ->
+            grid[yPath[idx]][xPath[idx]]++
+        }
+    }
+
+    private fun between(a: Int, b: Int): List<Int> = when {
+        a > b -> IntRange(b, a).reversed().toList()
+        a < b -> IntRange(a, b).toList()
+        else -> IntRange(a, a).toList()
     }
 
     fun print() {
