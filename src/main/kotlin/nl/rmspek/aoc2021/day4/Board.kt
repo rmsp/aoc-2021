@@ -8,7 +8,7 @@ class Board(private val rows: List<Row>) {
     }
 
     fun sumEmpty(): Int = rows.flatMap { it.boxes }.filter { !it.checked }.sumBy { it.value }
-    // private fun winner(): Boolean = rows.any { it.winner() } || columnWinner()
+    fun winner(): Boolean = rows.any { it.winner() } || columnWinner()
 
     private fun columnWinner() = (0 until Y_SZ).any(this::columnWinnerAt)
     private fun columnWinnerAt(colIndex: Int) = rows.all { it.boxes[colIndex].checked }

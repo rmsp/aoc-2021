@@ -8,7 +8,7 @@ fun main() {
     val input = parseInput(scan)
     val game = Game(parseBoards(scan))
 
-    val result = game.resolveWinner(input)
+    val result = game.resolveLoser(input)
     println(result)
     println(result.input * result.sumEmpty)
 }
