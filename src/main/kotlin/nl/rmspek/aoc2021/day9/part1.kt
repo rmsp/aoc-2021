@@ -12,7 +12,7 @@ fun findRiskLevels(map: HeightMap): Sequence<Int> = sequence {
     (map.rows.indices).forEach { y ->
         (map.rows[y].indices).forEach { x ->
             val value = map.at(x, y)
-            if (map.surroundings(x, y).filter { it != -1 }.none { it <= value }) {
+            if (map.surroundings(x, y).filterNotNull().none { map.at(it.first, it.second) <= value }) {
                 yield(value + 1)
             }
         }
