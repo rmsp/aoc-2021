@@ -6,11 +6,11 @@ import kotlin.math.roundToInt
 
 fun main() {
     val positions = readIntLineList(7)
-    val fuel = calculateMoveTo(positions)
+    val fuel = calculateLinearMoveTo(positions)
     println(fuel)
 }
 
-fun calculateMoveTo(positions: Sequence<Int>): Int {
+fun calculateLinearMoveTo(positions: Sequence<Int>): Int {
     val median = positions.toList().median()
     return positions.sumBy { abs(median - it) }
 }
