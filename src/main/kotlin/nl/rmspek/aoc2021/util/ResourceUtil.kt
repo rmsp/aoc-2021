@@ -2,6 +2,7 @@ package nl.rmspek.aoc2021.util
 
 import java.nio.charset.Charset
 import java.util.*
+import java.util.regex.Pattern
 
 fun readDayInput(day: Int, file: String = "input") = object{}.javaClass.getResource("/day${day}/$file").readText(Charset.forName("UTF-8"))
 
@@ -23,4 +24,11 @@ fun readIntList(day: Int, file: String = "input"): List<Int> {
     }
 
     return result
+}
+
+fun readIntLineList(day: Int, file: String = "input") = sequence {
+    val scan = Scanner(readDayInput(day, file)).useDelimiter(Pattern.compile("[,\\n]"))
+    while (scan.hasNextInt()) {
+        yield(scan.nextInt())
+    }
 }
