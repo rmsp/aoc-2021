@@ -10,7 +10,7 @@ class Grid(val rows: List<MutableList<Octopus>>) {
 
     fun set(point: Point, octopus: Octopus): Octopus = octopus.also { rows[point.y][point.x] = octopus }
 
-    private fun step() {
+    fun step(): List<Point> {
         val hasFlashed = mutableListOf<Point>()
         val doIncrease = ArrayDeque(everyPoint())
         while (doIncrease.isNotEmpty()) {
@@ -23,7 +23,11 @@ class Grid(val rows: List<MutableList<Octopus>>) {
         }
         hasFlashed.forEach { set(it, Octopus(0)) }
         flashCount += hasFlashed.size
+
+        return hasFlashed
     }
+
+    fun octopusCount() = everyPoint().count()
 
     private fun everyPoint(): List<Point> = (rows.indices).flatMap { y ->
         (rows.first().indices).map { x -> Point(x, y) }
