@@ -32,6 +32,11 @@ fun reverse(char: Char) = when(char) {
     ']' -> '['
     '}' -> '{'
     '>' -> '<'
+
+    '(' -> ')'
+    '[' -> ']'
+    '{' -> '}'
+    '<' -> '>'
     else -> throw Error("bad char $char")
 }
 
