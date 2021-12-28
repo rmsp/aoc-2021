@@ -28,7 +28,12 @@ fun main() {
     val scanner = Scanner(readDayInput(13))
     var points = parsePoints(scanner)
     val folds = parseFolds(scanner)
-    folds.take(1).forEach { fold ->
+    doFold(points, folds, 1)
+}
+
+fun doFold(_points: Set<Pair<Int, Int>>, folds: List<Pair< Char, Int>>, count: Int?): Set<Pair<Int, Int>> {
+    var points = _points
+    folds.take(count ?: folds.size).forEach { fold ->
         points = when (fold.first) {
             'y' -> foldVertical(points, fold.second)
             'x' -> foldHorizontal(points, fold.second)
@@ -37,6 +42,7 @@ fun main() {
         println(points.count())
     }
 
+    return points
 }
 
 private fun foldVertical(points: Set<Pair<Int, Int>>, y: Int): Set<Pair<Int, Int>> {
