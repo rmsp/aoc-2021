@@ -19,3 +19,6 @@ fun main() {
     println(tally)
     println(max.value - min.value)
 }
+
+//{O=1579, V=1984, F=2485, N=2197, K=1122, B=3523, H=2426, S=1006, C=755, P=2380}
+//2768
